@@ -19,9 +19,23 @@
             font-family: 'Montserrat', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: linear-gradient(135deg, #ff6ec4 0%, #7873f5 50%, #ffd6ff 100%);
             background-attachment: fixed;
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
             min-height: 100vh;
             padding: 20px 20px 60px 20px;
             overflow-x: hidden;
+        }
+
+        @keyframes gradientShift {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
         }
 
         .container {
@@ -83,20 +97,32 @@
         }
 
         .stat-card {
-            background: rgba(255, 255, 255, 0.95);
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
             border-radius: 20px;
             padding: 30px 20px;
             text-align: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2), 
+                        0 0 20px rgba(255, 255, 255, 0.1);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             animation: slideUp 0.8s ease-out;
             animation-fill-mode: both;
+            position: relative;
+            overflow: hidden;
         }
 
         .stat-card:nth-child(1) { animation-delay: 0.2s; }
         .stat-card:nth-child(2) { animation-delay: 0.4s; }
         .stat-card:nth-child(3) { animation-delay: 0.6s; }
         .stat-card:nth-child(4) { animation-delay: 0.8s; }
+
+        .stat-card:hover {
+            transform: translateY(-10px) scale(1.03);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3), 
+                        0 0 30px rgba(255, 255, 255, 0.2);
+        }
 
         @keyframes slideUp {
             from {
@@ -137,14 +163,25 @@
 
         /* Таймер */
         .timer-box {
-            background: rgba(255, 255, 255, 0.95);
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
             border-radius: 20px;
             padding: 35px 25px;
             text-align: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2), 
+                        0 0 20px rgba(255, 255, 255, 0.1);
             margin-bottom: 40px;
             animation: slideUp 0.8s ease-out 1s;
             animation-fill-mode: both;
+            transition: all 0.3s ease;
+        }
+
+        .timer-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3), 
+                        0 0 30px rgba(255, 255, 255, 0.2);
         }
 
         .timer-box h3 {
@@ -188,11 +225,12 @@
 
         /* Кнопки */
         .buttons-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
             gap: 20px;
             margin-bottom: 40px;
-            text-align: center;
         }
 
         .surprise-btn, .compliment-btn {
@@ -208,7 +246,9 @@
             font-weight: bold;
             font-family: 'Caveat', cursive;
             animation: bounce 2s infinite;
-            width: 100%;
+            flex: 1 1 250px;
+            max-width: 400px;
+            min-width: 250px;
         }
 
         .compliment-btn {
@@ -237,11 +277,15 @@
 
         /* Генератор комплиментов */
         .compliment-display {
-            background: rgba(255, 255, 255, 0.95);
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
             border-radius: 20px;
             padding: 40px;
             text-align: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2), 
+                        0 0 20px rgba(255, 255, 255, 0.1);
             margin-bottom: 40px;
             min-height: 150px;
             display: flex;
@@ -249,6 +293,13 @@
             justify-content: center;
             position: relative;
             overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .compliment-display:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3), 
+                        0 0 30px rgba(255, 255, 255, 0.2);
         }
 
         .compliment-text {
@@ -273,11 +324,22 @@
 
         /* Секция "Почему я тебя люблю" */
         .reasons-section {
-            background: rgba(255, 255, 255, 0.95);
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
             border-radius: 20px;
             padding: 40px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2), 
+                        0 0 20px rgba(255, 255, 255, 0.1);
             margin-bottom: 40px;
+            transition: all 0.3s ease;
+        }
+
+        .reasons-section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3), 
+                        0 0 30px rgba(255, 255, 255, 0.2);
         }
 
         .reasons-section h3 {
@@ -331,12 +393,23 @@
 
         /* Интерактивное сердце */
         .interactive-heart-section {
-            background: rgba(255, 255, 255, 0.95);
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
             border-radius: 20px;
             padding: 40px;
             text-align: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2), 
+                        0 0 20px rgba(255, 255, 255, 0.1);
             margin-bottom: 40px;
+            transition: all 0.3s ease;
+        }
+
+        .interactive-heart-section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3), 
+                        0 0 30px rgba(255, 255, 255, 0.2);
         }
 
         .interactive-heart-section h3 {
@@ -641,14 +714,25 @@
         }
 
         .message-box {
-            background: rgba(255, 255, 255, 0.95);
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
             border-radius: 20px;
             padding: 40px;
             text-align: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2), 
+                        0 0 20px rgba(255, 255, 255, 0.1);
             animation: fadeIn 1.5s ease-in 1s;
             animation-fill-mode: both;
             margin-bottom: 30px;
+            transition: all 0.3s ease;
+        }
+
+        .message-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3), 
+                        0 0 30px rgba(255, 255, 255, 0.2);
         }
 
         .message-box h2 {
@@ -964,11 +1048,12 @@
                 padding: 15px 30px;
                 font-size: 1em;
                 width: 100%;
-                max-width: 300px;
+                max-width: 100%;
+                min-width: auto;
             }
 
             .buttons-container {
-                grid-template-columns: 1fr;
+                flex-direction: column;
                 gap: 15px;
             }
 
@@ -1049,6 +1134,365 @@
 
             .progress-bar-container {
                 max-width: 100%;
+            }
+        }
+
+        /* Новые секции */
+        
+        /* Счетчик поцелуев */
+        .kiss-counter-section {
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2), 
+                        0 0 20px rgba(255, 255, 255, 0.1);
+            margin-bottom: 40px;
+            transition: all 0.3s ease;
+        }
+
+        .kiss-counter-section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3), 
+                        0 0 30px rgba(255, 255, 255, 0.2);
+        }
+
+        .kiss-counter-section h3 {
+            font-family: 'Caveat', cursive;
+            color: #ff6ec4;
+            font-size: 2.5em;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .kiss-emoji {
+            font-size: 120px;
+            cursor: pointer;
+            display: inline-block;
+            transition: transform 0.1s ease;
+            user-select: none;
+            margin: 20px 0;
+            animation: floatKiss 3s ease-in-out infinite;
+        }
+
+        @keyframes floatKiss {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg);
+            }
+            25% {
+                transform: translateY(-10px) rotate(-5deg);
+            }
+            75% {
+                transform: translateY(-5px) rotate(5deg);
+            }
+        }
+
+        .kiss-emoji:active {
+            transform: scale(0.85);
+        }
+
+        .kiss-count-display {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #f5576c;
+            margin: 20px 0;
+            font-family: 'Caveat', cursive;
+        }
+
+        /* Колесо фортуны */
+        .wheel-section {
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2), 
+                        0 0 20px rgba(255, 255, 255, 0.1);
+            margin-bottom: 40px;
+            transition: all 0.3s ease;
+        }
+
+        .wheel-section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3), 
+                        0 0 30px rgba(255, 255, 255, 0.2);
+        }
+
+        .wheel-section h3 {
+            font-family: 'Caveat', cursive;
+            color: #ff6ec4;
+            font-size: 2.5em;
+            margin-bottom: 25px;
+            font-weight: 700;
+        }
+
+        .wheel-container {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            margin: 30px auto;
+        }
+
+        .wheel {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 8px solid #fff;
+            box-shadow: 0 0 30px rgba(255, 110, 196, 0.5), 
+                        0 10px 40px rgba(0,0,0,0.3);
+            position: relative;
+            transition: transform 4s cubic-bezier(0.17, 0.67, 0.12, 0.99);
+            background: conic-gradient(
+                from 0deg,
+                #ff6ec4 0deg 45deg,
+                #ffd6ff 45deg 90deg,
+                #f5576c 90deg 135deg,
+                #ffc3f0 135deg 180deg,
+                #7873f5 180deg 225deg,
+                #fee140 225deg 270deg,
+                #fa709a 270deg 315deg,
+                #a8edea 315deg 360deg
+            );
+        }
+
+        .wheel-pointer {
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 0;
+            border-left: 20px solid transparent;
+            border-right: 20px solid transparent;
+            border-top: 30px solid #ff6ec4;
+            filter: drop-shadow(0 5px 10px rgba(0,0,0,0.3));
+            z-index: 10;
+        }
+
+        .wheel.spinning {
+            transition: transform 4s cubic-bezier(0.17, 0.67, 0.12, 0.99);
+        }
+
+        .spin-btn {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            border: none;
+            padding: 18px 45px;
+            font-size: 1.3em;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(245, 87, 108, 0.4);
+            transition: all 0.3s ease;
+            font-weight: bold;
+            font-family: 'Caveat', cursive;
+            margin-top: 20px;
+        }
+
+        .spin-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 40px rgba(245, 87, 108, 0.6);
+        }
+
+        .spin-btn:active {
+            transform: scale(0.95);
+        }
+
+        .spin-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .task-result {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            padding: 25px;
+            margin-top: 25px;
+            font-size: 1.3em;
+            color: #f5576c;
+            font-family: 'Caveat', cursive;
+            font-weight: 700;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+            display: none;
+            animation: bounceIn 0.6s ease-out;
+        }
+
+        .task-result.visible {
+            display: block;
+        }
+
+        /* Секция достижений */
+        .achievements-section {
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2), 
+                        0 0 20px rgba(255, 255, 255, 0.1);
+            margin-bottom: 40px;
+            transition: all 0.3s ease;
+        }
+
+        .achievements-section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3), 
+                        0 0 30px rgba(255, 255, 255, 0.2);
+        }
+
+        .achievements-section h3 {
+            font-family: 'Caveat', cursive;
+            color: #ff6ec4;
+            font-size: 2.5em;
+            text-align: center;
+            margin-bottom: 30px;
+            font-weight: 700;
+        }
+
+        .achievement-item {
+            margin-bottom: 25px;
+        }
+
+        .achievement-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .achievement-label {
+            font-size: 1.2em;
+            color: #333;
+            font-weight: 600;
+        }
+
+        .achievement-value {
+            font-size: 1.1em;
+            color: #f5576c;
+            font-weight: bold;
+        }
+
+        .achievement-bar {
+            width: 100%;
+            height: 25px;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: inset 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .achievement-progress {
+            height: 100%;
+            background: linear-gradient(135deg, #ff6ec4 0%, #f5576c 100%);
+            border-radius: 15px;
+            transition: width 1.5s ease-out;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 10px;
+            color: white;
+            font-weight: bold;
+            font-size: 0.9em;
+            box-shadow: 0 2px 10px rgba(255, 110, 196, 0.4);
+        }
+
+        /* Плавная прокрутка */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .scroll-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(135deg, #ff6ec4 0%, #f5576c 100%);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            cursor: pointer;
+            box-shadow: 0 5px 20px rgba(255, 110, 196, 0.5);
+            transition: all 0.3s ease;
+            opacity: 0;
+            visibility: hidden;
+            z-index: 100;
+        }
+
+        .scroll-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .scroll-to-top:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(255, 110, 196, 0.7);
+        }
+
+        /* Мобильная адаптация для новых секций */
+        @media (max-width: 768px) {
+            .wheel-container {
+                width: 250px;
+                height: 250px;
+            }
+
+            .spin-btn {
+                padding: 15px 35px;
+                font-size: 1.1em;
+            }
+
+            .task-result {
+                font-size: 1.1em;
+                padding: 20px;
+            }
+
+            .kiss-emoji {
+                font-size: 100px;
+            }
+
+            .kiss-count-display {
+                font-size: 2em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .wheel-container {
+                width: 200px;
+                height: 200px;
+            }
+
+            .kiss-emoji {
+                font-size: 80px;
+            }
+
+            .kiss-count-display {
+                font-size: 1.8em;
+            }
+
+            .spin-btn {
+                padding: 12px 30px;
+                font-size: 1em;
+            }
+
+            .task-result {
+                font-size: 1em;
+                padding: 18px;
+            }
+
+            .scroll-to-top {
+                width: 45px;
+                height: 45px;
+                bottom: 20px;
+                right: 20px;
+                font-size: 20px;
             }
         }
     </style>
@@ -1269,6 +1713,105 @@
             </div>
             <div class="gallery-item" onclick="openLightbox(11)">
                 <img src="Фото/12.jpg" alt="Фото 12" loading="lazy">
+            </div>
+        </div>
+
+        <h2 class="section-title">💋 Счетчик Поцелуев</h2>
+        
+        <div class="kiss-counter-section">
+            <h3>Поцелуй меня! 💋</h3>
+            <p class="subtitle">Кликай на губки и собирай поцелуи! 😘</p>
+            
+            <div class="kiss-count-display">
+                💋 <span id="kiss-count">0</span> поцелуев
+            </div>
+            
+            <div class="kiss-emoji" id="kiss-emoji" onclick="addKiss()">
+                💋
+            </div>
+        </div>
+
+        <h2 class="section-title">🎡 Колесо Романтических Заданий</h2>
+        
+        <div class="wheel-section">
+            <h3>Крути колесо удачи! 🎰</h3>
+            <p class="subtitle">Получи романтическое задание для нас двоих!</p>
+            
+            <div class="wheel-container">
+                <div class="wheel-pointer"></div>
+                <div class="wheel" id="wheel"></div>
+            </div>
+            
+            <button class="spin-btn" id="spin-btn" onclick="spinWheel()">
+                🎡 Крутить колесо! 🎡
+            </button>
+            
+            <div class="task-result" id="task-result"></div>
+        </div>
+
+        <h2 class="section-title">🏆 Наши Достижения</h2>
+        
+        <div class="achievements-section">
+            <h3>Что мы уже прошли вместе 💫</h3>
+            
+            <div class="achievement-item">
+                <div class="achievement-header">
+                    <span class="achievement-label">📅 Дней вместе</span>
+                    <span class="achievement-value" id="days-achievement">0/365</span>
+                </div>
+                <div class="achievement-bar">
+                    <div class="achievement-progress" id="days-progress" style="width: 0%"></div>
+                </div>
+            </div>
+
+            <div class="achievement-item">
+                <div class="achievement-header">
+                    <span class="achievement-label">💌 Сообщений отправлено</span>
+                    <span class="achievement-value">50000+/100000</span>
+                </div>
+                <div class="achievement-bar">
+                    <div class="achievement-progress" style="width: 50%">50%</div>
+                </div>
+            </div>
+
+            <div class="achievement-item">
+                <div class="achievement-header">
+                    <span class="achievement-label">🎬 Фильмов посмотрено</span>
+                    <span class="achievement-value">35/100</span>
+                </div>
+                <div class="achievement-bar">
+                    <div class="achievement-progress" style="width: 35%">35%</div>
+                </div>
+            </div>
+
+            <div class="achievement-item">
+                <div class="achievement-header">
+                    <span class="achievement-label">🎮 Часов в играх вместе</span>
+                    <span class="achievement-value">120/500</span>
+                </div>
+                <div class="achievement-bar">
+                    <div class="achievement-progress" style="width: 24%">24%</div>
+                </div>
+            </div>
+
+            <div class="achievement-item">
+                <div class="achievement-header">
+                    <span class="achievement-label">📸 Совместных фото</span>
+                    <span class="achievement-value">500+/1000</span>
+                </div>
+                <div class="achievement-bar">
+                    <div class="achievement-progress" style="width: 50%">50%</div>
+                </div>
+            </div>
+
+            <div class="achievement-item">
+                <div class="achievement-header">
+                    <span class="achievement-label">❤️ Уровень любви</span>
+                    <span class="achievement-value">∞/∞</span>
+                </div>
+                <div class="achievement-bar">
+                    <div class="achievement-progress" style="width: 100%; background: linear-gradient(135deg, #ff6ec4 0%, #7873f5 50%, #ffd6ff 100%);">100%</div>
+                </div>
             </div>
         </div>
 
@@ -1563,6 +2106,129 @@
                 changeImage(-1, new Event('swipe'));
             }
         }
+
+        // Счетчик поцелуев
+        let kissCount = parseInt(localStorage.getItem('kissCount')) || 0;
+
+        function updateKissDisplay() {
+            document.getElementById('kiss-count').textContent = kissCount;
+        }
+
+        function addKiss() {
+            kissCount++;
+            localStorage.setItem('kissCount', kissCount);
+            updateKissDisplay();
+
+            // Анимация клика
+            const kiss = document.getElementById('kiss-emoji');
+            kiss.style.animation = 'none';
+            void kiss.offsetWidth; // Trigger reflow
+            kiss.style.animation = 'heartClick 0.3s ease-out, floatKiss 3s ease-in-out infinite';
+
+            // Создаем летящий поцелуй
+            createFloatingKiss();
+        }
+
+        function createFloatingKiss() {
+            const floatingKiss = document.createElement('div');
+            floatingKiss.className = 'floating-heart';
+            floatingKiss.textContent = Math.random() > 0.5 ? '💋' : '😘';
+
+            const rect = document.getElementById('kiss-emoji').getBoundingClientRect();
+            floatingKiss.style.left = (rect.left + rect.width / 2 - 20) + 'px';
+            floatingKiss.style.top = (rect.top + rect.height / 2) + 'px';
+
+            document.body.appendChild(floatingKiss);
+
+            setTimeout(() => {
+                floatingKiss.remove();
+            }, 2000);
+        }
+
+        // Инициализация счетчика поцелуев
+        updateKissDisplay();
+
+        // Колесо фортуны
+        const tasks = [
+            "💕 Обнять крепко-крепко на 30 секунд",
+            "😘 500 поцелуев прямо сейчас!",
+            "🎬 Посмотреть вместе любимый фильм",
+            "🍕 Заказать вкусную еду и поужинать вместе",
+            "🎮 Сыграть в игру вместе 2 часа",
+            "📸 Сделать 20 селфи вместе",
+            "💌 Написать романтическое письмо",
+            "🎵 Послушать вместе любимую музыку и потанцевать"
+        ];
+
+        let isSpinning = false;
+
+        function spinWheel() {
+            if (isSpinning) return;
+
+            isSpinning = true;
+            const spinBtn = document.getElementById('spin-btn');
+            const wheel = document.getElementById('wheel');
+            const taskResult = document.getElementById('task-result');
+
+            spinBtn.disabled = true;
+            taskResult.classList.remove('visible');
+
+            // Случайное количество оборотов (5-10 полных оборотов + случайный угол)
+            const spins = Math.floor(Math.random() * 5) + 5;
+            const randomDegree = Math.floor(Math.random() * 360);
+            const totalRotation = spins * 360 + randomDegree;
+
+            wheel.style.transform = `rotate(${totalRotation}deg)`;
+
+            // После завершения вращения
+            setTimeout(() => {
+                // Определяем задание по финальному углу
+                const finalDegree = randomDegree % 360;
+                const taskIndex = Math.floor((finalDegree / 360) * tasks.length);
+                const selectedTask = tasks[taskIndex];
+
+                // Показываем результат
+                taskResult.textContent = selectedTask;
+                taskResult.classList.add('visible');
+
+                isSpinning = false;
+                spinBtn.disabled = false;
+            }, 4000);
+        }
+
+        // Обновление прогресса достижений
+        function updateAchievements() {
+            const now = new Date().getTime();
+            const diff = now - startDate;
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+
+            // Обновляем прогресс дней
+            const daysProgress = Math.min((days / 365) * 100, 100);
+            document.getElementById('days-progress').style.width = daysProgress + '%';
+            document.getElementById('days-progress').textContent = Math.floor(daysProgress) + '%';
+            document.getElementById('days-achievement').textContent = days + '/365';
+        }
+
+        // Обновляем достижения при загрузке
+        updateAchievements();
+
+        // Кнопка прокрутки наверх
+        const scrollBtn = document.createElement('div');
+        scrollBtn.className = 'scroll-to-top';
+        scrollBtn.innerHTML = '↑';
+        scrollBtn.onclick = () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        };
+        document.body.appendChild(scrollBtn);
+
+        // Показываем кнопку при прокрутке
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                scrollBtn.classList.add('visible');
+            } else {
+                scrollBtn.classList.remove('visible');
+            }
+        });
     </script>
 </body>
 </html>
