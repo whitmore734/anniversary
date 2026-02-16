@@ -1,0 +1,1568 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Наш Год Вместе ❤️</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #ff6ec4 0%, #7873f5 50%, #ffd6ff 100%);
+            background-attachment: fixed;
+            min-height: 100vh;
+            padding: 20px 20px 60px 20px;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1000px;
+            width: 100%;
+            margin: 0 auto;
+            animation: fadeIn 1.5s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            color: white;
+            padding-top: 20px;
+        }
+
+        .header h1 {
+            font-family: 'Caveat', cursive;
+            font-size: 4em;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            animation: pulse 2s infinite;
+            font-weight: 700;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        .header p {
+            font-family: 'Caveat', cursive;
+            font-size: 1.6em;
+            opacity: 0.95;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+            font-weight: 600;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 30px 20px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            animation: slideUp 0.8s ease-out;
+            animation-fill-mode: both;
+        }
+
+        .stat-card:nth-child(1) { animation-delay: 0.2s; }
+        .stat-card:nth-child(2) { animation-delay: 0.4s; }
+        .stat-card:nth-child(3) { animation-delay: 0.6s; }
+        .stat-card:nth-child(4) { animation-delay: 0.8s; }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .stat-card:active {
+            transform: scale(0.95);
+        }
+
+        .stat-icon {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.1));
+        }
+
+        .stat-number {
+            font-size: 2.8em;
+            font-weight: bold;
+            background: linear-gradient(135deg, #ff6ec4 0%, #7873f5 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin: 10px 0;
+        }
+
+        .stat-label {
+            font-size: 1.1em;
+            color: #555;
+            font-weight: 500;
+        }
+
+        /* Таймер */
+        .timer-box {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 35px 25px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            margin-bottom: 40px;
+            animation: slideUp 0.8s ease-out 1s;
+            animation-fill-mode: both;
+        }
+
+        .timer-box h3 {
+            font-family: 'Caveat', cursive;
+            color: #ff6ec4;
+            font-size: 2.3em;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .timer-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .timer-item {
+            background: linear-gradient(135deg, #ff6ec4 0%, #7873f5 100%);
+            border-radius: 15px;
+            padding: 20px 10px;
+            color: white;
+        }
+
+        .timer-value {
+            font-size: 2.5em;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .timer-label {
+            font-size: 0.9em;
+            opacity: 0.9;
+        }
+
+        .timer-subtitle {
+            color: #666;
+            font-size: 1.1em;
+            margin-top: 10px;
+        }
+
+        /* Кнопки */
+        .buttons-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .surprise-btn, .compliment-btn {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            border: none;
+            padding: 20px 40px;
+            font-size: 1.2em;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(245, 87, 108, 0.4);
+            transition: all 0.3s ease;
+            font-weight: bold;
+            font-family: 'Caveat', cursive;
+            animation: bounce 2s infinite;
+            width: 100%;
+        }
+
+        .compliment-btn {
+            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+            box-shadow: 0 10px 30px rgba(250, 112, 154, 0.4);
+            animation-delay: 0.5s;
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .surprise-btn:hover, .compliment-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 40px rgba(245, 87, 108, 0.6);
+        }
+
+        .surprise-btn:active, .compliment-btn:active {
+            transform: scale(0.95);
+        }
+
+        /* Генератор комплиментов */
+        .compliment-display {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            margin-bottom: 40px;
+            min-height: 150px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .compliment-text {
+            font-family: 'Caveat', cursive;
+            font-size: 2.2em;
+            color: #f5576c;
+            font-weight: 700;
+            animation: fadeInScale 0.8s ease-out;
+            line-height: 1.4;
+        }
+
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* Секция "Почему я тебя люблю" */
+        .reasons-section {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            margin-bottom: 40px;
+        }
+
+        .reasons-section h3 {
+            font-family: 'Caveat', cursive;
+            color: #ff6ec4;
+            font-size: 2.5em;
+            text-align: center;
+            margin-bottom: 30px;
+            font-weight: 700;
+        }
+
+        .reasons-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .reason-card {
+            background: linear-gradient(135deg, #ffc3f0 0%, #ffd6ff 100%);
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            font-size: 1.05em;
+            color: #333;
+            box-shadow: 0 5px 15px rgba(255, 110, 196, 0.2);
+            transition: transform 0.3s ease;
+            animation: slideUp 0.6s ease-out;
+            animation-fill-mode: both;
+        }
+
+        .reason-card:nth-child(1) { animation-delay: 0.1s; }
+        .reason-card:nth-child(2) { animation-delay: 0.2s; }
+        .reason-card:nth-child(3) { animation-delay: 0.3s; }
+        .reason-card:nth-child(4) { animation-delay: 0.4s; }
+        .reason-card:nth-child(5) { animation-delay: 0.5s; }
+        .reason-card:nth-child(6) { animation-delay: 0.6s; }
+        .reason-card:nth-child(7) { animation-delay: 0.7s; }
+        .reason-card:nth-child(8) { animation-delay: 0.8s; }
+        .reason-card:nth-child(9) { animation-delay: 0.9s; }
+        .reason-card:nth-child(10) { animation-delay: 1s; }
+
+        .reason-card:hover {
+            transform: scale(1.05) rotate(2deg);
+        }
+
+        .reason-emoji {
+            font-size: 1.8em;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        /* Интерактивное сердце */
+        .interactive-heart-section {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            margin-bottom: 40px;
+        }
+
+        .interactive-heart-section h3 {
+            font-family: 'Caveat', cursive;
+            color: #ff6ec4;
+            font-size: 2.5em;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .interactive-heart-section .subtitle {
+            color: #666;
+            font-size: 1.1em;
+            margin-bottom: 25px;
+        }
+
+        .heart-counter {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #f5576c;
+            margin-bottom: 20px;
+            font-family: 'Caveat', cursive;
+        }
+
+        .interactive-heart {
+            font-size: 120px;
+            cursor: pointer;
+            display: inline-block;
+            transition: transform 0.1s ease;
+            user-select: none;
+            margin: 20px 0;
+            animation: heartBeat 1.5s ease-in-out infinite;
+        }
+
+        @keyframes heartBeat {
+            0%, 100% {
+                transform: scale(1);
+            }
+            10%, 30% {
+                transform: scale(1.1);
+            }
+            20%, 40% {
+                transform: scale(1.05);
+            }
+        }
+
+        .interactive-heart:active {
+            transform: scale(0.9);
+        }
+
+        .interactive-heart.clicked {
+            animation: heartClick 0.3s ease-out;
+        }
+
+        @keyframes heartClick {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.3) rotate(5deg);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .floating-heart {
+            position: fixed;
+            font-size: 40px;
+            pointer-events: none;
+            animation: floatUp 2s ease-out forwards;
+            z-index: 100;
+        }
+
+        @keyframes floatUp {
+            0% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-200px) scale(1.5);
+            }
+        }
+
+        .progress-bar-container {
+            width: 100%;
+            max-width: 500px;
+            height: 30px;
+            background: #f0f0f0;
+            border-radius: 15px;
+            margin: 20px auto;
+            overflow: hidden;
+            box-shadow: inset 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(135deg, #ff6ec4 0%, #f5576c 100%);
+            border-radius: 15px;
+            transition: width 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 0.9em;
+        }
+
+        .chocolate-reward {
+            display: none;
+            background: linear-gradient(135deg, #ffd89b 0%, #19547b 100%);
+            color: white;
+            padding: 20px 40px;
+            border-radius: 50px;
+            font-size: 1.3em;
+            font-family: 'Caveat', cursive;
+            font-weight: 700;
+            margin-top: 20px;
+            animation: bounceIn 0.6s ease-out;
+        }
+
+        .chocolate-reward.visible {
+            display: inline-block;
+        }
+
+        @keyframes bounceIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.3);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            70% {
+                transform: scale(0.9);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .exchange-btn {
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            color: #333;
+            border: none;
+            padding: 15px 35px;
+            font-size: 1.2em;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: bold;
+            font-family: 'Caveat', cursive;
+            margin-top: 15px;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .exchange-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+        }
+
+        .exchange-btn:active {
+            transform: scale(0.95);
+        }
+
+        /* Модальное окно с посланием */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .modal.active {
+            display: flex;
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+            position: relative;
+            animation: slideUp 0.5s ease-out;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 30px;
+            color: #999;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .modal-close:hover {
+            color: #333;
+        }
+
+        .modal-content h2 {
+            font-family: 'Caveat', cursive;
+            color: #f5576c;
+            font-size: 2.8em;
+            margin-bottom: 25px;
+            animation: pulse 2s infinite;
+            font-weight: 700;
+        }
+
+        .modal-content .poem {
+            color: #555;
+            font-size: 1.15em;
+            line-height: 2;
+            text-align: center;
+            font-style: italic;
+            white-space: pre-line;
+        }
+
+        .modal-content .poem-line {
+            animation: fadeInLine 1s ease-in;
+            animation-fill-mode: both;
+        }
+
+        .modal-content .poem-line:nth-child(1) { animation-delay: 0.2s; }
+        .modal-content .poem-line:nth-child(2) { animation-delay: 0.4s; }
+        .modal-content .poem-line:nth-child(3) { animation-delay: 0.6s; }
+        .modal-content .poem-line:nth-child(4) { animation-delay: 0.8s; }
+        .modal-content .poem-line:nth-child(5) { animation-delay: 1s; }
+        .modal-content .poem-line:nth-child(6) { animation-delay: 1.2s; }
+        .modal-content .poem-line:nth-child(7) { animation-delay: 1.4s; }
+        .modal-content .poem-line:nth-child(8) { animation-delay: 1.6s; }
+        .modal-content .poem-line:nth-child(9) { animation-delay: 1.8s; }
+        .modal-content .poem-line:nth-child(10) { animation-delay: 2s; }
+        .modal-content .poem-line:nth-child(11) { animation-delay: 2.2s; }
+        .modal-content .poem-line:nth-child(12) { animation-delay: 2.4s; }
+
+        @keyframes fadeInLine {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section-title {
+            font-family: 'Caveat', cursive;
+            text-align: center;
+            color: white;
+            font-size: 3em;
+            margin: 50px 0 30px 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            font-weight: 700;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            aspect-ratio: 1;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .gallery-item:active {
+            transform: scale(0.95);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .message-box {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            animation: fadeIn 1.5s ease-in 1s;
+            animation-fill-mode: both;
+            margin-bottom: 30px;
+        }
+
+        .message-box h2 {
+            font-family: 'Caveat', cursive;
+            color: #ff6ec4;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .message-box p {
+            color: #555;
+            font-size: 1.2em;
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+
+        .hearts {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .heart {
+            position: absolute;
+            font-size: 20px;
+            color: rgba(255, 255, 255, 0.5);
+            animation: float 10s infinite;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .heart:nth-child(1) { left: 5%; animation-delay: 0s; animation-duration: 12s; }
+        .heart:nth-child(2) { left: 15%; animation-delay: 2s; animation-duration: 15s; }
+        .heart:nth-child(3) { left: 25%; animation-delay: 4s; animation-duration: 10s; }
+        .heart:nth-child(4) { left: 35%; animation-delay: 1s; animation-duration: 13s; }
+        .heart:nth-child(5) { left: 45%; animation-delay: 3s; animation-duration: 11s; }
+        .heart:nth-child(6) { left: 55%; animation-delay: 5s; animation-duration: 14s; }
+        .heart:nth-child(7) { left: 65%; animation-delay: 1.5s; animation-duration: 16s; }
+        .heart:nth-child(8) { left: 75%; animation-delay: 3.5s; animation-duration: 9s; }
+        .heart:nth-child(9) { left: 85%; animation-delay: 2.5s; animation-duration: 13s; }
+        .heart:nth-child(10) { left: 95%; animation-delay: 4.5s; animation-duration: 12s; }
+        .heart:nth-child(11) { left: 8%; animation-delay: 6s; animation-duration: 14s; }
+        .heart:nth-child(12) { left: 18%; animation-delay: 7s; animation-duration: 11s; }
+        .heart:nth-child(13) { left: 28%; animation-delay: 5.5s; animation-duration: 15s; }
+        .heart:nth-child(14) { left: 38%; animation-delay: 8s; animation-duration: 10s; }
+        .heart:nth-child(15) { left: 48%; animation-delay: 6.5s; animation-duration: 13s; }
+        .heart:nth-child(16) { left: 58%; animation-delay: 7.5s; animation-duration: 12s; }
+        .heart:nth-child(17) { left: 68%; animation-delay: 8.5s; animation-duration: 14s; }
+        .heart:nth-child(18) { left: 78%; animation-delay: 9s; animation-duration: 11s; }
+        .heart:nth-child(19) { left: 88%; animation-delay: 9.5s; animation-duration: 15s; }
+        .heart:nth-child(20) { left: 12%; animation-delay: 10s; animation-duration: 13s; }
+
+        /* Лепестки роз */
+        .petals {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .petal {
+            position: absolute;
+            font-size: 25px;
+            animation: fallPetal 15s infinite;
+            opacity: 0.7;
+        }
+
+        @keyframes fallPetal {
+            0% {
+                transform: translateY(-100vh) rotate(0deg) translateX(0);
+                opacity: 0.7;
+            }
+            100% {
+                transform: translateY(100vh) rotate(720deg) translateX(100px);
+                opacity: 0;
+            }
+        }
+
+        .petal:nth-child(1) { left: 5%; animation-delay: 0s; animation-duration: 14s; }
+        .petal:nth-child(2) { left: 15%; animation-delay: 3s; animation-duration: 16s; }
+        .petal:nth-child(3) { left: 25%; animation-delay: 6s; animation-duration: 13s; }
+        .petal:nth-child(4) { left: 35%; animation-delay: 2s; animation-duration: 18s; }
+        .petal:nth-child(5) { left: 45%; animation-delay: 5s; animation-duration: 15s; }
+        .petal:nth-child(6) { left: 55%; animation-delay: 8s; animation-duration: 14s; }
+        .petal:nth-child(7) { left: 65%; animation-delay: 1s; animation-duration: 17s; }
+        .petal:nth-child(8) { left: 75%; animation-delay: 4s; animation-duration: 16s; }
+        .petal:nth-child(9) { left: 85%; animation-delay: 7s; animation-duration: 15s; }
+        .petal:nth-child(10) { left: 95%; animation-delay: 9s; animation-duration: 14s; }
+
+        /* Лайтбокс для полноэкранного просмотра */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        .lightbox-content {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+            border-radius: 10px;
+            box-shadow: 0 0 50px rgba(255, 255, 255, 0.3);
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 40px;
+            color: white;
+            cursor: pointer;
+            user-select: none;
+            z-index: 1001;
+        }
+
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 50px;
+            color: white;
+            cursor: pointer;
+            user-select: none;
+            padding: 20px;
+            z-index: 1001;
+        }
+
+        .lightbox-prev {
+            left: 20px;
+        }
+
+        .lightbox-next {
+            right: 20px;
+        }
+
+        /* Мобильная адаптация */
+        @media (max-width: 768px) {
+            body {
+                padding: 15px 15px 40px 15px;
+            }
+
+            .header {
+                margin-bottom: 30px;
+                padding-top: 10px;
+            }
+
+            .header h1 {
+                font-size: 2.2em;
+            }
+            
+            .header p {
+                font-size: 1em;
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+            
+            .stat-card {
+                padding: 25px 15px;
+            }
+
+            .stat-icon {
+                font-size: 2em;
+            }
+            
+            .stat-number {
+                font-size: 2.2em;
+            }
+
+            .stat-label {
+                font-size: 0.95em;
+            }
+
+            .section-title {
+                font-size: 1.8em;
+                margin: 35px 0 20px 0;
+            }
+
+            .gallery {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 10px;
+            }
+            
+            .message-box {
+                padding: 25px 20px;
+            }
+
+            .message-box h2 {
+                font-size: 1.5em;
+            }
+
+            .message-box p {
+                font-size: 1em;
+            }
+
+            .timer-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 10px;
+            }
+
+            .timer-value {
+                font-size: 2em;
+            }
+
+            .timer-subtitle {
+                font-size: 0.9em;
+            }
+
+            .surprise-btn {
+                padding: 15px 35px;
+                font-size: 1.1em;
+            }
+
+            .modal-content {
+                padding: 25px 15px;
+                max-height: 80vh;
+                overflow-y: auto;
+            }
+
+            .modal-content h2 {
+                font-size: 1.5em;
+                margin-bottom: 15px;
+            }
+
+            .modal-content .poem {
+                font-size: 0.95em;
+                line-height: 1.7;
+            }
+
+            .modal-close {
+                font-size: 25px;
+                top: 10px;
+                right: 15px;
+            }
+
+            .poem-line {
+                margin: 3px 0;
+            }
+
+            .lightbox-nav {
+                font-size: 35px;
+                padding: 10px;
+            }
+
+            .lightbox-prev {
+                left: 10px;
+            }
+
+            .lightbox-next {
+                right: 10px;
+            }
+
+            .lightbox-close {
+                font-size: 30px;
+                top: 15px;
+                right: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header h1 {
+                font-size: 1.8em;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+
+            .timer-value {
+                font-size: 1.8em;
+            }
+
+            .timer-label {
+                font-size: 0.8em;
+            }
+
+            .surprise-btn, .compliment-btn {
+                padding: 15px 30px;
+                font-size: 1em;
+                width: 100%;
+                max-width: 300px;
+            }
+
+            .buttons-container {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+
+            .compliment-text {
+                font-size: 1.6em;
+            }
+
+            .compliment-display {
+                padding: 25px 20px;
+                min-height: 120px;
+            }
+
+            .reasons-section {
+                padding: 25px 20px;
+            }
+
+            .reasons-section h3 {
+                font-size: 2em;
+            }
+
+            .reasons-grid {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+
+            .reason-card {
+                padding: 18px;
+                font-size: 0.95em;
+            }
+
+            .interactive-heart-section {
+                padding: 25px 20px;
+            }
+
+            .interactive-heart-section h3 {
+                font-size: 2em;
+            }
+
+            .interactive-heart {
+                font-size: 80px;
+            }
+
+            .heart-counter {
+                font-size: 2em;
+            }
+
+            .chocolate-reward {
+                font-size: 1.1em;
+                padding: 15px 30px;
+            }
+
+            .exchange-btn {
+                font-size: 1em;
+                padding: 12px 25px;
+            }
+
+            .modal {
+                padding: 10px;
+            }
+
+            .modal-content {
+                padding: 20px 12px;
+            }
+
+            .modal-content h2 {
+                font-size: 1.3em;
+                margin-bottom: 12px;
+            }
+
+            .modal-content .poem {
+                font-size: 0.85em;
+                line-height: 1.6;
+            }
+
+            .interactive-heart {
+                font-size: 100px;
+            }
+
+            .progress-bar-container {
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="hearts">
+        <div class="heart">❤️</div>
+        <div class="heart">💕</div>
+        <div class="heart">💖</div>
+        <div class="heart">💗</div>
+        <div class="heart">💝</div>
+        <div class="heart">💞</div>
+        <div class="heart">❤️</div>
+        <div class="heart">💕</div>
+        <div class="heart">💖</div>
+        <div class="heart">💗</div>
+        <div class="heart">💝</div>
+        <div class="heart">💞</div>
+        <div class="heart">❤️</div>
+        <div class="heart">💕</div>
+        <div class="heart">💖</div>
+        <div class="heart">💗</div>
+        <div class="heart">💝</div>
+        <div class="heart">💞</div>
+        <div class="heart">💓</div>
+        <div class="heart">💗</div>
+    </div>
+
+    <div class="petals">
+        <div class="petal">🌸</div>
+        <div class="petal">🌺</div>
+        <div class="petal">🌸</div>
+        <div class="petal">🌺</div>
+        <div class="petal">🌸</div>
+        <div class="petal">🌺</div>
+        <div class="petal">🌸</div>
+        <div class="petal">🌺</div>
+        <div class="petal">🌸</div>
+        <div class="petal">🌺</div>
+    </div>
+
+    <div class="container">
+        <div class="header">
+            <h1>❤️ Наш Год Вместе ❤️</h1>
+            <p>365 дней любви, нежности и счастья</p>
+        </div>
+
+        <!-- Таймер -->
+        <div class="timer-box">
+            <h3>⏰ Вместе уже</h3>
+            <div class="timer-grid">
+                <div class="timer-item">
+                    <div class="timer-value" id="days">0</div>
+                    <div class="timer-label">дней</div>
+                </div>
+                <div class="timer-item">
+                    <div class="timer-value" id="hours">0</div>
+                    <div class="timer-label">часов</div>
+                </div>
+                <div class="timer-item">
+                    <div class="timer-value" id="minutes">0</div>
+                    <div class="timer-label">минут</div>
+                </div>
+                <div class="timer-item">
+                    <div class="timer-value" id="seconds">0</div>
+                    <div class="timer-label">секунд</div>
+                </div>
+            </div>
+            <p class="timer-subtitle">С 17 февраля 2025 года • <span id="months">12</span> месяцев счастья</p>
+        </div>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-icon">🌙</div>
+                <div class="stat-number">621</div>
+                <div class="stat-label">Спокойной ночи</div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon">💕</div>
+                <div class="stat-number">1112</div>
+                <div class="stat-label">Люблю тебя</div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon">💭</div>
+                <div class="stat-number">~150</div>
+                <div class="stat-label">Скучаю</div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon">🎤</div>
+                <div class="stat-number">10300</div>
+                <div class="stat-label">Голосовые и кружки</div>
+            </div>
+        </div>
+
+        <div class="buttons-container">
+            <button class="surprise-btn" onclick="openModal()">✨ Открыть сюрприз ✨</button>
+            <button class="compliment-btn" onclick="generateCompliment()">💝 Случайный комплимент 💝</button>
+        </div>
+
+        <div class="compliment-display" id="compliment-display" style="display: none;">
+            <p class="compliment-text" id="compliment-text"></p>
+        </div>
+
+        <h2 class="section-title">💕 Почему я тебя люблю</h2>
+        
+        <div class="reasons-section">
+            <div class="reasons-grid">
+                <div class="reason-card">
+                    <span class="reason-emoji">😊</span>
+                    <p>Твоя улыбка освещает мой день</p>
+                </div>
+                <div class="reason-card">
+                    <span class="reason-emoji">🌟</span>
+                    <p>Ты делаешь меня лучше</p>
+                </div>
+                <div class="reason-card">
+                    <span class="reason-emoji">💫</span>
+                    <p>С тобой я чувствую себя дома</p>
+                </div>
+                <div class="reason-card">
+                    <span class="reason-emoji">🌹</span>
+                    <p>Ты самая красивая</p>
+                </div>
+                <div class="reason-card">
+                    <span class="reason-emoji">✨</span>
+                    <p>Твой смех - моя любимая мелодия</p>
+                </div>
+                <div class="reason-card">
+                    <span class="reason-emoji">💖</span>
+                    <p>Ты понимаешь меня без слов</p>
+                </div>
+                <div class="reason-card">
+                    <span class="reason-emoji">🦋</span>
+                    <p>С тобой я чувствую бабочек</p>
+                </div>
+                <div class="reason-card">
+                    <span class="reason-emoji">🌈</span>
+                    <p>Ты моя радуга после дождя</p>
+                </div>
+                <div class="reason-card">
+                    <span class="reason-emoji">⭐</span>
+                    <p>Ты моя путеводная звезда</p>
+                </div>
+                <div class="reason-card">
+                    <span class="reason-emoji">💝</span>
+                    <p>Просто за то, что ты есть</p>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="section-title">� Интерактивные Сердечки</h2>
+        
+        <div class="interactive-heart-section">
+            <h3>Собери сердечки для сюрприза! 💝</h3>
+            <p class="subtitle">Кликай на сердце и накопи 1000 сердечек, чтобы обменять их на любимую шоколадку! 🍫</p>
+            
+            <div class="heart-counter">
+                💖 <span id="heart-count">0</span> / 1000
+            </div>
+            
+            <div class="progress-bar-container">
+                <div class="progress-bar" id="progress-bar" style="width: 0%;">
+                    <span id="progress-text">0%</span>
+                </div>
+            </div>
+            
+            <div class="interactive-heart" id="interactive-heart" onclick="clickHeart()">
+                ❤️
+            </div>
+            
+            <div class="chocolate-reward" id="chocolate-reward">
+                🎉 Поздравляю! Ты заработала шоколадку! 🍫
+            </div>
+            
+            <button class="exchange-btn" id="exchange-btn" style="display: none;" onclick="exchangeHearts()">
+                🍫 Обменять на шоколадку! 🍫
+            </button>
+        </div>
+
+        <h2 class="section-title">�📸 Наши Моменты</h2>
+        
+        <div class="gallery">
+            <div class="gallery-item" onclick="openLightbox(0)">
+                <img src="Фото/1.jpg" alt="Фото 1" loading="lazy">
+            </div>
+            <div class="gallery-item" onclick="openLightbox(1)">
+                <img src="Фото/2.jpg" alt="Фото 2" loading="lazy">
+            </div>
+            <div class="gallery-item" onclick="openLightbox(2)">
+                <img src="Фото/3.jpg" alt="Фото 3" loading="lazy">
+            </div>
+            <div class="gallery-item" onclick="openLightbox(3)">
+                <img src="Фото/4.jpg" alt="Фото 4" loading="lazy">
+            </div>
+            <div class="gallery-item" onclick="openLightbox(4)">
+                <img src="Фото/5.jpg" alt="Фото 5" loading="lazy">
+            </div>
+            <div class="gallery-item" onclick="openLightbox(5)">
+                <img src="Фото/6.jpg" alt="Фото 6" loading="lazy">
+            </div>
+            <div class="gallery-item" onclick="openLightbox(6)">
+                <img src="Фото/7.jpg" alt="Фото 7" loading="lazy">
+            </div>
+            <div class="gallery-item" onclick="openLightbox(7)">
+                <img src="Фото/8.jpg" alt="Фото 8" loading="lazy">
+            </div>
+            <div class="gallery-item" onclick="openLightbox(8)">
+                <img src="Фото/9.jpg" alt="Фото 9" loading="lazy">
+            </div>
+            <div class="gallery-item" onclick="openLightbox(9)">
+                <img src="Фото/10.jpg" alt="Фото 10" loading="lazy">
+            </div>
+            <div class="gallery-item" onclick="openLightbox(10)">
+                <img src="Фото/11.jpg" alt="Фото 11" loading="lazy">
+            </div>
+            <div class="gallery-item" onclick="openLightbox(11)">
+                <img src="Фото/12.jpg" alt="Фото 12" loading="lazy">
+            </div>
+        </div>
+
+        <div class="message-box">
+            <h2>Спасибо за этот год! 💝</h2>
+            <p>Каждый день с тобой — это маленькое чудо.</p>
+            <p>Ты делаешь мою жизнь ярче, теплее и счастливее.</p>
+            <p>Люблю тебя больше, чем вчера, но меньше, чем завтра! ❤️</p>
+        </div>
+    </div>
+
+    <!-- Лайтбокс для полноэкранного просмотра фото -->
+    <div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+        <span class="lightbox-close" onclick="closeLightbox(event)">&times;</span>
+        <span class="lightbox-nav lightbox-prev" onclick="changeImage(-1, event)">&#10094;</span>
+        <img class="lightbox-content" id="lightbox-img" src="" alt="Фото">
+        <span class="lightbox-nav lightbox-next" onclick="changeImage(1, event)">&#10095;</span>
+    </div>
+
+    <!-- Модальное окно с посланием -->
+    <div class="modal" id="modal" onclick="closeModal(event)">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <span class="modal-close" onclick="closeModal(event)">&times;</span>
+            <h2>💝 Для моей любимой 💝</h2>
+            <div class="poem">
+                <div class="poem-line">О боги, я к вам обращаюсь</div>
+                <div class="poem-line">Я не могу поверить, что со мной</div>
+                <div class="poem-line">Такое чудо вдруг случилось</div>
+                <div class="poem-line">Народ его зовет любовь</div>
+                <br>
+                <div class="poem-line">О боги, как она красива</div>
+                <div class="poem-line">Я не могу верить по сей день</div>
+                <div class="poem-line">Что мир создал такую деву</div>
+                <div class="poem-line">И свел меня по жизни с ней</div>
+                <br>
+                <div class="poem-line">О боги, как же я влюблен</div>
+                <div class="poem-line">Готов отдать ей свою жизнь</div>
+                <div class="poem-line">Боготворить ее на веки обречен</div>
+                <div class="poem-line">И делать жизнь ее счастливой</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Таймер "Вместе уже..."
+        const startDate = new Date('2025-02-17T01:00:00+03:00').getTime();
+
+        function updateTimer() {
+            const now = new Date().getTime();
+            const diff = now - startDate;
+
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+            document.getElementById('days').textContent = days;
+            document.getElementById('hours').textContent = hours;
+            document.getElementById('minutes').textContent = minutes;
+            document.getElementById('seconds').textContent = seconds;
+
+            // Обновляем количество месяцев
+            const months = Math.floor(days / 30.44); // среднее количество дней в месяце
+            document.getElementById('months').textContent = months;
+        }
+
+        // Обновляем таймер каждую секунду
+        updateTimer();
+        setInterval(updateTimer, 1000);
+
+        // Модальное окно
+        function openModal() {
+            document.getElementById('modal').classList.add('active');
+        }
+
+        function closeModal(event) {
+            if (event.target.classList.contains('modal') || 
+                event.target.classList.contains('modal-close')) {
+                document.getElementById('modal').classList.remove('active');
+            }
+        }
+
+        // Генератор комплиментов
+        const compliments = [
+            "Ты самая красивая девушка в мире 💕",
+            "Твоя улыбка делает мой день лучше ✨",
+            "С тобой я чувствую себя самым счастливым человеком 🌟",
+            "Ты моя муза и вдохновение 🎨",
+            "Твои глаза - мой любимый цвет 💖",
+            "Ты делаешь меня лучшей версией себя 🌹",
+            "Каждый момент с тобой - подарок 🎁",
+            "Твой смех - самая прекрасная мелодия 🎵",
+            "Ты моё всё, моя любовь, моя жизнь 💝",
+            "С тобой даже обычные дни становятся волшебными ✨",
+            "Ты умна, красива и невероятна 🌟",
+            "Мне повезло, что ты выбрала меня 🍀",
+            "Ты самый ценный человек в моей жизни 💎",
+            "Просыпаться и знать, что ты моя - лучшее чувство ☀️",
+            "Ты идеальна для меня во всём 💕",
+            "Твоя доброта и нежность бесценны 🦋",
+            "С тобой я дома, где бы мы ни были 🏡",
+            "Ты моя любимая мысль перед сном 🌙",
+            "Благодарю судьбу за каждый день с тобой 🙏",
+            "Ты - лучшее, что случилось в моей жизни ❤️"
+        ];
+
+        let lastComplimentIndex = -1;
+
+        function generateCompliment() {
+            const display = document.getElementById('compliment-display');
+            const text = document.getElementById('compliment-text');
+            
+            // Выбираем случайный комплимент, отличный от предыдущего
+            let randomIndex;
+            do {
+                randomIndex = Math.floor(Math.random() * compliments.length);
+            } while (randomIndex === lastComplimentIndex && compliments.length > 1);
+            
+            lastComplimentIndex = randomIndex;
+            
+            // Показываем комплимент с анимацией
+            display.style.display = 'flex';
+            text.style.animation = 'none';
+            
+            // Trigger reflow для перезапуска анимации
+            void text.offsetWidth;
+            
+            text.textContent = compliments[randomIndex];
+            text.style.animation = 'fadeInScale 0.8s ease-out';
+        }
+
+        // Интерактивное сердце
+        let heartCount = parseInt(localStorage.getItem('heartCount')) || 0;
+        let chocolatesEarned = parseInt(localStorage.getItem('chocolatesEarned')) || 0;
+
+        // Инициализация при загрузке страницы
+        document.addEventListener('DOMContentLoaded', function() {
+            updateHeartDisplay();
+        });
+
+        function updateHeartDisplay() {
+            document.getElementById('heart-count').textContent = heartCount;
+            
+            const percentage = Math.min((heartCount / 1000) * 100, 100);
+            document.getElementById('progress-bar').style.width = percentage + '%';
+            document.getElementById('progress-text').textContent = Math.floor(percentage) + '%';
+            
+            // Проверяем, достигнут ли лимит
+            if (heartCount >= 1000) {
+                document.getElementById('chocolate-reward').classList.add('visible');
+                document.getElementById('exchange-btn').style.display = 'inline-block';
+            }
+        }
+
+        function clickHeart() {
+            if (heartCount >= 1000) {
+                return; // Не позволяем накликивать больше 1000
+            }
+            
+            heartCount++;
+            localStorage.setItem('heartCount', heartCount);
+            updateHeartDisplay();
+            
+            // Анимация клика на сердце
+            const heart = document.getElementById('interactive-heart');
+            heart.classList.add('clicked');
+            setTimeout(() => {
+                heart.classList.remove('clicked');
+            }, 300);
+            
+            // Создаем летящее сердечко
+            createFloatingHeart(event);
+            
+            // Проверяем достижение 1000
+            if (heartCount === 1000) {
+                setTimeout(() => {
+                    alert('🎉 Поздравляю! Ты собрала 1000 сердечек! Теперь ты можешь обменять их на любимую шоколадку! 🍫');
+                }, 500);
+            }
+        }
+
+        function createFloatingHeart(event) {
+            const floatingHeart = document.createElement('div');
+            floatingHeart.className = 'floating-heart';
+            floatingHeart.textContent = '❤️';
+            
+            // Позиционируем относительно клика
+            const rect = document.getElementById('interactive-heart').getBoundingClientRect();
+            floatingHeart.style.left = (rect.left + rect.width / 2 - 20) + 'px';
+            floatingHeart.style.top = (rect.top + rect.height / 2) + 'px';
+            
+            document.body.appendChild(floatingHeart);
+            
+            // Удаляем после анимации
+            setTimeout(() => {
+                floatingHeart.remove();
+            }, 2000);
+        }
+
+        function exchangeHearts() {
+            if (heartCount >= 1000) {
+                chocolatesEarned++;
+                localStorage.setItem('chocolatesEarned', chocolatesEarned);
+                
+                // Сбрасываем счетчик
+                heartCount = 0;
+                localStorage.setItem('heartCount', heartCount);
+                
+                // Скрываем награду и кнопку
+                document.getElementById('chocolate-reward').classList.remove('visible');
+                document.getElementById('exchange-btn').style.display = 'none';
+                
+                updateHeartDisplay();
+                
+                // Показываем поздравление
+                alert(`🎉 Отлично! Ты обменяла сердечки на шоколадку! 🍫\n\nВсего шоколадок заработано: ${chocolatesEarned}\n\nНачинай собирать снова! 💖`);
+            }
+        }
+
+        // Галерея и лайтбокс
+        let currentImageIndex = 0;
+        const totalImages = 12;
+
+        function openLightbox(index) {
+            currentImageIndex = index;
+            document.getElementById('lightbox').classList.add('active');
+            updateLightboxImage();
+        }
+
+        function closeLightbox(event) {
+            if (event.target.classList.contains('lightbox') || 
+                event.target.classList.contains('lightbox-close')) {
+                document.getElementById('lightbox').classList.remove('active');
+            }
+        }
+
+        function changeImage(direction, event) {
+            event.stopPropagation();
+            currentImageIndex += direction;
+            
+            if (currentImageIndex < 0) {
+                currentImageIndex = totalImages - 1;
+            } else if (currentImageIndex >= totalImages) {
+                currentImageIndex = 0;
+            }
+            
+            updateLightboxImage();
+        }
+
+        function updateLightboxImage() {
+            document.getElementById('lightbox-img').src = `Фото/${currentImageIndex + 1}.jpg`;
+        }
+
+        // Поддержка клавиатуры
+        document.addEventListener('keydown', function(e) {
+            const lightbox = document.getElementById('lightbox');
+            const modal = document.getElementById('modal');
+            
+            if (modal.classList.contains('active')) {
+                if (e.key === 'Escape') {
+                    modal.classList.remove('active');
+                }
+            } else if (lightbox.classList.contains('active')) {
+                if (e.key === 'Escape') {
+                    lightbox.classList.remove('active');
+                } else if (e.key === 'ArrowLeft') {
+                    changeImage(-1, e);
+                } else if (e.key === 'ArrowRight') {
+                    changeImage(1, e);
+                }
+            }
+        });
+
+        // Поддержка свайпов на мобильных устройствах
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        document.getElementById('lightbox').addEventListener('touchstart', function(e) {
+            touchStartX = e.changedTouches[0].screenX;
+        });
+
+        document.getElementById('lightbox').addEventListener('touchend', function(e) {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        });
+
+        function handleSwipe() {
+            if (touchEndX < touchStartX - 50) {
+                changeImage(1, new Event('swipe'));
+            }
+            if (touchEndX > touchStartX + 50) {
+                changeImage(-1, new Event('swipe'));
+            }
+        }
+    </script>
+</body>
+</html>
