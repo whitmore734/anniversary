@@ -1828,6 +1828,167 @@
                 margin-top: 15px;
             }
         }
+
+        /* Секция диалогов в стиле Telegram */
+        .dialogs-section {
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2), 
+                        0 0 20px rgba(255, 255, 255, 0.1);
+            margin-bottom: 40px;
+            transition: all 0.3s ease;
+        }
+
+        .dialogs-section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3), 
+                        0 0 30px rgba(255, 255, 255, 0.2);
+        }
+
+        .dialogs-section h3 {
+            font-family: 'Caveat', cursive;
+            color: #ff6ec4;
+            font-size: 2.5em;
+            text-align: center;
+            margin-bottom: 30px;
+            font-weight: 700;
+        }
+
+        .dialog-group {
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        .dialog-label {
+            font-size: 0.9em;
+            color: #666;
+            text-align: center;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .messages-container {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .message {
+            display: flex;
+            animation: messageSlideIn 0.5s ease-out;
+            animation-fill-mode: both;
+        }
+
+        @keyframes messageSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .message.left {
+            justify-content: flex-start;
+        }
+
+        .message.right {
+            justify-content: flex-end;
+        }
+
+        .message-bubble {
+            max-width: 70%;
+            padding: 12px 16px;
+            border-radius: 18px;
+            position: relative;
+            word-wrap: break-word;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            font-size: 1em;
+            line-height: 1.4;
+        }
+
+        .message.left .message-bubble {
+            background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+            color: #2e7d32;
+            border-bottom-left-radius: 4px;
+        }
+
+        .message.right .message-bubble {
+            background: linear-gradient(135deg, #ff6ec4 0%, #f5576c 100%);
+            color: white;
+            border-bottom-right-radius: 4px;
+        }
+
+        .message-author {
+            font-size: 0.85em;
+            font-weight: 600;
+            margin-bottom: 4px;
+            opacity: 0.9;
+        }
+
+        .message.left .message-author {
+            color: #1b5e20;
+        }
+
+        .message.right .message-author {
+            color: rgba(255, 255, 255, 0.95);
+        }
+
+        /* Задержки для анимаций сообщений */
+        .message:nth-child(1) { animation-delay: 0.1s; }
+        .message:nth-child(2) { animation-delay: 0.2s; }
+        .message:nth-child(3) { animation-delay: 0.3s; }
+        .message:nth-child(4) { animation-delay: 0.4s; }
+        .message:nth-child(5) { animation-delay: 0.5s; }
+
+        /* Адаптив для диалогов */
+        @media (max-width: 768px) {
+            .dialogs-section {
+                padding: 25px 20px;
+            }
+
+            .dialogs-section h3 {
+                font-size: 2em;
+            }
+
+            .message-bubble {
+                max-width: 80%;
+                font-size: 0.95em;
+            }
+
+            .dialog-group {
+                padding: 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .dialogs-section {
+                padding: 20px 15px;
+            }
+
+            .dialogs-section h3 {
+                font-size: 1.8em;
+            }
+
+            .message-bubble {
+                max-width: 85%;
+                font-size: 0.9em;
+                padding: 10px 14px;
+            }
+
+            .dialog-label {
+                font-size: 0.85em;
+            }
+        }
     </style>
 </head>
 <body>
@@ -2190,6 +2351,125 @@
                             <p>С тобой каждый день - праздник. Ты делаешь меня счастливым просто своим существованием.</p>
                             <p>Спасибо за то, что ты есть! 🌈</p>
                             <div class="signature">Счастливый быть с тобой 💜</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="section-title">💬 Наши Диалоги</h2>
+        
+        <div class="dialogs-section">
+            <h3>Незабываемые моменты из переписки 💕</h3>
+            
+            <!-- Диалог 1 -->
+            <div class="dialog-group">
+                <div class="dialog-label">📱 Диалог 1</div>
+                <div class="messages-container">
+                    <div class="message right">
+                        <div class="message-bubble">
+                            <div class="message-author">Маша</div>
+                            <div class="message-text">Ну в целом реально</div>
+                        </div>
+                    </div>
+                    <div class="message right">
+                        <div class="message-bubble">
+                            <div class="message-author">Маша</div>
+                            <div class="message-text">Нахуй спокойной ночи пивэчаит…</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Диалог 2 -->
+            <div class="dialog-group">
+                <div class="dialog-label">📱 Диалог 2</div>
+                <div class="messages-container">
+                    <div class="message left">
+                        <div class="message-bubble">
+                            <div class="message-author">Юра</div>
+                            <div class="message-text">Мне повезло</div>
+                        </div>
+                    </div>
+                    <div class="message left">
+                        <div class="message-bubble">
+                            <div class="message-author">Юра</div>
+                            <div class="message-text">И мне девушка сделала подарок в виде отношений</div>
+                        </div>
+                    </div>
+                    <div class="message right">
+                        <div class="message-bubble">
+                            <div class="message-author">Маша</div>
+                            <div class="message-text">Ну с девушкой не повезло</div>
+                        </div>
+                    </div>
+                    <div class="message right">
+                        <div class="message-bubble">
+                            <div class="message-author">Маша</div>
+                            <div class="message-text">Жаль тебя</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Диалог 3 -->
+            <div class="dialog-group">
+                <div class="dialog-label">📱 Диалог 3</div>
+                <div class="messages-container">
+                    <div class="message right">
+                        <div class="message-bubble">
+                            <div class="message-author">Маша</div>
+                            <div class="message-text">Мяу</div>
+                        </div>
+                    </div>
+                    <div class="message right">
+                        <div class="message-bubble">
+                            <div class="message-author">Маша</div>
+                            <div class="message-text">Захотелось просто</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Диалог 4 -->
+            <div class="dialog-group">
+                <div class="dialog-label">📱 Диалог 4</div>
+                <div class="messages-container">
+                    <div class="message right">
+                        <div class="message-bubble">
+                            <div class="message-author">Маша</div>
+                            <div class="message-text">Уходи</div>
+                        </div>
+                    </div>
+                    <div class="message left">
+                        <div class="message-bubble">
+                            <div class="message-author">Юра</div>
+                            <div class="message-text">Мне тебя сейчас не хватает</div>
+                        </div>
+                    </div>
+                    <div class="message right">
+                        <div class="message-bubble">
+                            <div class="message-author">Маша</div>
+                            <div class="message-text">Пока</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Диалог 5 -->
+            <div class="dialog-group">
+                <div class="dialog-label">📱 Диалог 5</div>
+                <div class="messages-container">
+                    <div class="message left">
+                        <div class="message-bubble">
+                            <div class="message-author">Юра</div>
+                            <div class="message-text">Люблю тебя🌸</div>
+                        </div>
+                    </div>
+                    <div class="message right">
+                        <div class="message-bubble">
+                            <div class="message-author">Маша</div>
+                            <div class="message-text">Сука</div>
                         </div>
                     </div>
                 </div>
@@ -2645,7 +2925,7 @@
             });
 
             // Секции
-            const sections = document.querySelectorAll('.reasons-section, .compliment-display, .cards-section');
+            const sections = document.querySelectorAll('.reasons-section, .compliment-display, .cards-section, .dialogs-section');
             sections.forEach(el => {
                 el.classList.add('reveal');
                 observer.observe(el);
@@ -2810,6 +3090,16 @@
                 }, 3500);
             }
         };
+
+        // Анимация появления диалогов с задержкой
+        document.addEventListener('DOMContentLoaded', () => {
+            const dialogGroups = document.querySelectorAll('.dialog-group');
+            dialogGroups.forEach((group, index) => {
+                group.classList.add('reveal-scale');
+                group.style.animationDelay = `${index * 0.2}s`;
+                observer.observe(group);
+            });
+        });
 
         console.log('✨ Все анимации загружены и активированы! ✨');
     </script>
