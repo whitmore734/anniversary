@@ -43,6 +43,9 @@
             width: 100%;
             margin: 0 auto;
             animation: fadeIn 1.5s ease-in;
+            overflow-x: hidden;
+            position: relative;
+            z-index: 10;
         }
 
         @keyframes fadeIn {
@@ -757,7 +760,8 @@
             top: 0;
             left: 0;
             pointer-events: none;
-            z-index: -1;
+            z-index: 1;
+            overflow: hidden;
         }
 
         .heart {
@@ -807,7 +811,8 @@
             top: 0;
             left: 0;
             pointer-events: none;
-            z-index: -1;
+            z-index: 1;
+            overflow: hidden;
         }
 
         .petal {
@@ -1064,6 +1069,14 @@
             .compliment-display {
                 padding: 25px 20px;
                 min-height: 120px;
+            }
+
+            /* Отключаем typewriter на узких экранах */
+            .typewriter {
+                white-space: normal;
+                border-right: none;
+                animation: none;
+                display: block;
             }
 
             .reasons-section {
@@ -1472,12 +1485,13 @@
         /* Плавная прокрутка */
         html {
             scroll-behavior: smooth;
+            overflow-x: hidden;
         }
 
         /* Scroll Reveal Анимации */
         .reveal {
             opacity: 0;
-            transform: translateY(50px);
+            transform: translateY(30px);
             transition: opacity 0.8s ease, transform 0.8s ease;
         }
 
@@ -1488,7 +1502,7 @@
 
         .reveal-left {
             opacity: 0;
-            transform: translateX(-50px);
+            transform: translateX(-30px);
             transition: opacity 0.8s ease, transform 0.8s ease;
         }
 
@@ -1499,7 +1513,7 @@
 
         .reveal-right {
             opacity: 0;
-            transform: translateX(50px);
+            transform: translateX(30px);
             transition: opacity 0.8s ease, transform 0.8s ease;
         }
 
@@ -1550,14 +1564,15 @@
             white-space: nowrap;
             animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
             display: inline-block;
+            max-width: 100%;
         }
 
         @keyframes typing {
             from {
-                width: 0;
+                max-width: 0;
             }
             to {
-                width: 100%;
+                max-width: 100%;
             }
         }
 
@@ -2700,8 +2715,19 @@
             }
         });
 
-        // Parallax эффект для фоновых элементов
+        // Parallax эффект для фоновых элементов (с небольшой задержкой и только на десктопе)
+        let parallaxEnabled = false;
+        
+        // Включаем parallax только на десктопе
+        if (window.innerWidth > 768) {
+            setTimeout(() => {
+                parallaxEnabled = true;
+            }, 1000);
+        }
+        
         window.addEventListener('scroll', () => {
+            if (!parallaxEnabled) return;
+            
             const scrolled = window.pageYOffset;
             const hearts = document.querySelector('.hearts');
             const petals = document.querySelector('.petals');
@@ -2744,12 +2770,13 @@
                 confetti.style.width = '10px';
                 confetti.style.height = '10px';
                 confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-                confetti.style.left = Math.random() * window.innerWidth + 'px';
+                confetti.style.left = Math.min(Math.random() * window.innerWidth, window.innerWidth - 20) + 'px';
                 confetti.style.top = '-10px';
                 confetti.style.borderRadius = '50%';
                 confetti.style.pointerEvents = 'none';
                 confetti.style.zIndex = '9999';
                 confetti.style.opacity = '1';
+                confetti.style.overflow = 'hidden';
                 
                 document.body.appendChild(confetti);
                 
