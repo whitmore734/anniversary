@@ -1325,80 +1325,143 @@
             display: block;
         }
 
-        /* Секция достижений */
-        .achievements-section {
-            background: rgba(255, 255, 255, 0.25);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            border-radius: 20px;
-            padding: 40px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2), 
-                        0 0 20px rgba(255, 255, 255, 0.1);
+        /* Виртуальные открытки */
+        .cards-section {
             margin-bottom: 40px;
-            transition: all 0.3s ease;
         }
 
-        .achievements-section:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.3), 
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .card-container {
+            perspective: 1000px;
+            height: 400px;
+        }
+
+        .card {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+        }
+
+        .card.flipped {
+            transform: rotateY(180deg);
+        }
+
+        .card-face {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 20px;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3), 
+                        0 0 20px rgba(255, 255, 255, 0.1);
+            transition: box-shadow 0.3s ease;
+        }
+
+        .card-container:hover .card-face {
+            box-shadow: 0 15px 50px rgba(0,0,0,0.4), 
                         0 0 30px rgba(255, 255, 255, 0.2);
         }
 
-        .achievements-section h3 {
+        .card-front {
+            background: linear-gradient(135deg, #ff6ec4 0%, #7873f5 100%);
+            color: white;
+        }
+
+        .card-back {
+            background: rgba(255, 255, 255, 0.95);
+            transform: rotateY(180deg);
+            overflow-y: auto;
+        }
+
+        .card-front h3 {
+            font-family: 'Caveat', cursive;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .card-front .card-icon {
+            font-size: 80px;
+            margin-bottom: 20px;
+            animation: floatIcon 3s ease-in-out infinite;
+        }
+
+        @keyframes floatIcon {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-15px);
+            }
+        }
+
+        .card-front p {
+            font-size: 1.2em;
+            opacity: 0.95;
+        }
+
+        .card-back h4 {
             font-family: 'Caveat', cursive;
             color: #ff6ec4;
-            font-size: 2.5em;
-            text-align: center;
-            margin-bottom: 30px;
+            font-size: 2em;
+            margin-bottom: 20px;
             font-weight: 700;
         }
 
-        .achievement-item {
-            margin-bottom: 25px;
-        }
-
-        .achievement-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 10px;
-        }
-
-        .achievement-label {
-            font-size: 1.2em;
-            color: #333;
-            font-weight: 600;
-        }
-
-        .achievement-value {
+        .card-back p {
+            color: #555;
             font-size: 1.1em;
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+
+        .card-back .signature {
+            margin-top: 20px;
+            font-family: 'Caveat', cursive;
+            font-size: 1.5em;
             color: #f5576c;
-            font-weight: bold;
+            font-weight: 700;
         }
 
-        .achievement-bar {
-            width: 100%;
-            height: 25px;
-            background: rgba(255, 255, 255, 0.5);
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: inset 0 2px 5px rgba(0,0,0,0.1);
+        /* Разные стили открыток */
+        .card-love .card-front {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
         }
 
-        .achievement-progress {
-            height: 100%;
-            background: linear-gradient(135deg, #ff6ec4 0%, #f5576c 100%);
-            border-radius: 15px;
-            transition: width 1.5s ease-out;
-            display: flex;
-            align-items: center;
-            justify-content: flex-end;
-            padding-right: 10px;
-            color: white;
-            font-weight: bold;
-            font-size: 0.9em;
-            box-shadow: 0 2px 10px rgba(255, 110, 196, 0.4);
+        .card-dream .card-front {
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+        }
+
+        .card-forever .card-front {
+            background: linear-gradient(135deg, #ffd89b 0%, #19547b 100%);
+        }
+
+        .card-smile .card-front {
+            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+        }
+
+        .card-heart .card-front {
+            background: linear-gradient(135deg, #ff6ec4 0%, #ffd6ff 100%);
+        }
+
+        .card-joy .card-front {
+            background: linear-gradient(135deg, #7873f5 0%, #ffc3f0 100%);
         }
 
         /* Плавная прокрутка */
@@ -1461,6 +1524,35 @@
             .kiss-count-display {
                 font-size: 2em;
             }
+
+            .cards-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 20px;
+            }
+
+            .card-container {
+                height: 350px;
+            }
+
+            .card-face {
+                padding: 25px;
+            }
+
+            .card-front h3 {
+                font-size: 2em;
+            }
+
+            .card-front .card-icon {
+                font-size: 60px;
+            }
+
+            .card-back h4 {
+                font-size: 1.8em;
+            }
+
+            .card-back p {
+                font-size: 1em;
+            }
         }
 
         @media (max-width: 480px) {
@@ -1493,6 +1585,42 @@
                 bottom: 20px;
                 right: 20px;
                 font-size: 20px;
+            }
+
+            .cards-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .card-container {
+                height: 380px;
+            }
+
+            .card-face {
+                padding: 20px;
+            }
+
+            .card-front h3 {
+                font-size: 1.8em;
+            }
+
+            .card-front .card-icon {
+                font-size: 60px;
+            }
+
+            .card-back h4 {
+                font-size: 1.6em;
+                margin-bottom: 15px;
+            }
+
+            .card-back p {
+                font-size: 0.95em;
+                margin-bottom: 12px;
+            }
+
+            .card-back .signature {
+                font-size: 1.3em;
+                margin-top: 15px;
             }
         }
     </style>
@@ -1749,68 +1877,116 @@
             <div class="task-result" id="task-result"></div>
         </div>
 
-        <h2 class="section-title">🏆 Наши Достижения</h2>
+        <h2 class="section-title">💌 Виртуальные Открытки</h2>
         
-        <div class="achievements-section">
-            <h3>Что мы уже прошли вместе 💫</h3>
-            
-            <div class="achievement-item">
-                <div class="achievement-header">
-                    <span class="achievement-label">📅 Дней вместе</span>
-                    <span class="achievement-value" id="days-achievement">0/365</span>
+        <div class="cards-section">
+            <div class="cards-grid">
+                <!-- Открытка 1: Любовь -->
+                <div class="card-container">
+                    <div class="card card-love" onclick="flipCard(this)">
+                        <div class="card-face card-front">
+                            <div class="card-icon">💕</div>
+                            <h3>Моя Любовь</h3>
+                            <p>Нажми, чтобы открыть</p>
+                        </div>
+                        <div class="card-face card-back">
+                            <h4>Для самой любимой 💕</h4>
+                            <p>Ты - причина моего счастья каждый день. С тобой я чувствую себя полным.</p>
+                            <p>Твоя улыбка делает мой мир ярче, а твой смех - это моя любимая мелодия.</p>
+                            <p>Я люблю тебя больше, чем могу выразить словами! ❤️</p>
+                            <div class="signature">С любовью навсегда 💖</div>
+                        </div>
+                    </div>
                 </div>
-                <div class="achievement-bar">
-                    <div class="achievement-progress" id="days-progress" style="width: 0%"></div>
-                </div>
-            </div>
 
-            <div class="achievement-item">
-                <div class="achievement-header">
-                    <span class="achievement-label">💌 Сообщений отправлено</span>
-                    <span class="achievement-value">50000+/100000</span>
+                <!-- Открытка 2: Мечты -->
+                <div class="card-container">
+                    <div class="card card-dream" onclick="flipCard(this)">
+                        <div class="card-face card-front">
+                            <div class="card-icon">✨</div>
+                            <h3>Наши Мечты</h3>
+                            <p>Нажми, чтобы открыть</p>
+                        </div>
+                        <div class="card-face card-back">
+                            <h4>Мечтаем вместе ✨</h4>
+                            <p>Я мечтаю провести с тобой всю жизнь, путешествовать по миру и создавать незабываемые воспоминания.</p>
+                            <p>Мечтаю строить нашу общую судьбу, наполненную любовью и счастьем.</p>
+                            <p>С тобой все мечты становятся реальностью! 🌟</p>
+                            <div class="signature">Твой мечтатель 💫</div>
+                        </div>
+                    </div>
                 </div>
-                <div class="achievement-bar">
-                    <div class="achievement-progress" style="width: 50%">50%</div>
-                </div>
-            </div>
 
-            <div class="achievement-item">
-                <div class="achievement-header">
-                    <span class="achievement-label">🎬 Фильмов посмотрено</span>
-                    <span class="achievement-value">35/100</span>
+                <!-- Открытка 3: Навсегда -->
+                <div class="card-container">
+                    <div class="card card-forever" onclick="flipCard(this)">
+                        <div class="card-face card-front">
+                            <div class="card-icon">♾️</div>
+                            <h3>Навсегда Вместе</h3>
+                            <p>Нажми, чтобы открыть</p>
+                        </div>
+                        <div class="card-face card-back">
+                            <h4>Вечная любовь ♾️</h4>
+                            <p>Каждый день с тобой - это подарок, который я ценю всем сердцем.</p>
+                            <p>Я обещаю любить тебя во все дни нашей жизни, быть рядом в радости и в печали.</p>
+                            <p>Ты и я - это навсегда! 💍</p>
+                            <div class="signature">Твой навечно 🌹</div>
+                        </div>
+                    </div>
                 </div>
-                <div class="achievement-bar">
-                    <div class="achievement-progress" style="width: 35%">35%</div>
-                </div>
-            </div>
 
-            <div class="achievement-item">
-                <div class="achievement-header">
-                    <span class="achievement-label">🎮 Часов в играх вместе</span>
-                    <span class="achievement-value">120/500</span>
+                <!-- Открытка 4: Улыбка -->
+                <div class="card-container">
+                    <div class="card card-smile" onclick="flipCard(this)">
+                        <div class="card-face card-front">
+                            <div class="card-icon">😊</div>
+                            <h3>Твоя Улыбка</h3>
+                            <p>Нажми, чтобы открыть</p>
+                        </div>
+                        <div class="card-face card-back">
+                            <h4>Моё счастье 😊</h4>
+                            <p>Твоя улыбка может растопить любой лёд в моём сердце.</p>
+                            <p>Когда ты улыбаешься, весь мир становится лучше. Это самое прекрасное, что я когда-либо видел.</p>
+                            <p>Продолжай улыбаться, моя радость! ☀️</p>
+                            <div class="signature">Влюблённый в твою улыбку 💛</div>
+                        </div>
+                    </div>
                 </div>
-                <div class="achievement-bar">
-                    <div class="achievement-progress" style="width: 24%">24%</div>
-                </div>
-            </div>
 
-            <div class="achievement-item">
-                <div class="achievement-header">
-                    <span class="achievement-label">📸 Совместных фото</span>
-                    <span class="achievement-value">500+/1000</span>
+                <!-- Открытка 5: Сердце -->
+                <div class="card-container">
+                    <div class="card card-heart" onclick="flipCard(this)">
+                        <div class="card-face card-front">
+                            <div class="card-icon">💖</div>
+                            <h3>Моё Сердце</h3>
+                            <p>Нажми, чтобы открыть</p>
+                        </div>
+                        <div class="card-face card-back">
+                            <h4>Ты в моём сердце 💖</h4>
+                            <p>Моё сердце бьётся только для тебя. Ты - его владычица и королева.</p>
+                            <p>Каждый удар моего сердца говорит: "Я люблю тебя".</p>
+                            <p>Ты навсегда в моём сердце! 💝</p>
+                            <div class="signature">Твоё сердце ❤️</div>
+                        </div>
+                    </div>
                 </div>
-                <div class="achievement-bar">
-                    <div class="achievement-progress" style="width: 50%">50%</div>
-                </div>
-            </div>
 
-            <div class="achievement-item">
-                <div class="achievement-header">
-                    <span class="achievement-label">❤️ Уровень любви</span>
-                    <span class="achievement-value">∞/∞</span>
-                </div>
-                <div class="achievement-bar">
-                    <div class="achievement-progress" style="width: 100%; background: linear-gradient(135deg, #ff6ec4 0%, #7873f5 50%, #ffd6ff 100%);">100%</div>
+                <!-- Открытка 6: Радость -->
+                <div class="card-container">
+                    <div class="card card-joy" onclick="flipCard(this)">
+                        <div class="card-face card-front">
+                            <div class="card-icon">🎉</div>
+                            <h3>Радость Жизни</h3>
+                            <p>Нажми, чтобы открыть</p>
+                        </div>
+                        <div class="card-face card-back">
+                            <h4>Ты - моя радость 🎉</h4>
+                            <p>Ты приносишь столько радости и света в мою жизнь!</p>
+                            <p>С тобой каждый день - праздник. Ты делаешь меня счастливым просто своим существованием.</p>
+                            <p>Спасибо за то, что ты есть! 🌈</p>
+                            <div class="signature">Счастливый быть с тобой 💜</div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -2196,21 +2372,15 @@
             }, 4000);
         }
 
-        // Обновление прогресса достижений
-        function updateAchievements() {
-            const now = new Date().getTime();
-            const diff = now - startDate;
-            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-
-            // Обновляем прогресс дней
-            const daysProgress = Math.min((days / 365) * 100, 100);
-            document.getElementById('days-progress').style.width = daysProgress + '%';
-            document.getElementById('days-progress').textContent = Math.floor(daysProgress) + '%';
-            document.getElementById('days-achievement').textContent = days + '/365';
+        // Функция для переворачивания открыток
+        function flipCard(card) {
+            card.classList.toggle('flipped');
+            
+            // Добавляем небольшую вибрацию при переворачивании
+            if (navigator.vibrate) {
+                navigator.vibrate(50);
+            }
         }
-
-        // Обновляем достижения при загрузке
-        updateAchievements();
 
         // Кнопка прокрутки наверх
         const scrollBtn = document.createElement('div');
