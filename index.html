@@ -1340,6 +1340,11 @@
         .card-container {
             perspective: 1000px;
             height: 400px;
+            transition: transform 0.3s ease;
+        }
+
+        .card-container:hover {
+            transform: scale(1.02);
         }
 
         .card {
@@ -2603,8 +2608,8 @@
 
         // Применяем reveal анимацию ко всем секциям
         document.addEventListener('DOMContentLoaded', () => {
-            // Основные секции
-            const revealElements = document.querySelectorAll('.stat-card, .reason-card, .gallery-item, .card-container');
+            // Основные секции (без card-container, чтобы не мешать flip анимации)
+            const revealElements = document.querySelectorAll('.stat-card, .reason-card, .gallery-item');
             revealElements.forEach((el, index) => {
                 el.classList.add('reveal');
                 if (index % 3 === 0) {
@@ -2716,14 +2721,6 @@
                 if (index % 2 === 0) {
                     card.classList.add('float-smooth');
                 }
-            });
-        });
-
-        // Glow эффект для открыток
-        document.addEventListener('DOMContentLoaded', () => {
-            const cards = document.querySelectorAll('.card');
-            cards.forEach(card => {
-                card.classList.add('glow-on-hover');
             });
         });
 
